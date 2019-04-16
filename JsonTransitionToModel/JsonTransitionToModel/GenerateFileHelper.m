@@ -49,6 +49,12 @@
     NSString *dateStr = [NSDate lb_stringWithDate:[NSDate date] format:@"yyyy/MM/dd"];
     NSString *dateStr2 = [NSDate lb_stringWithDate:[NSDate date] format:@"yyyy"];
     
+#warning 根据自己实际情况自定义，省去每次都重新填写
+    NSString *defaultDeveloperName = @"宋晨";
+    NSString *defaultProjectName = @"NetAskNurse";
+    _developerName = _developerName.length == 0 ? defaultDeveloperName : _developerName;
+    _projectName = _projectName.length == 0 ? defaultProjectName : _projectName;
+    
     [self.headerString appendFormat:k_HEADINFO('h'),_className,_projectName,_developerName,dateStr,dateStr2,_developerName];
     [self.sourceString appendFormat:k_HEADINFO('m'),_className,_projectName,_developerName,dateStr,dateStr2,_developerName,_className];
     
@@ -269,10 +275,8 @@ NS_INLINE NSString * getAllKeyValueString(NSArray *objInArr) {
 }
 
 - (BOOL)generateFile {
-    
-    NSString *dateString = [NSDate lb_stringWithDate:[NSDate date] format:@"yyyy-MM-dd"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    NSString *dirPath = [paths[0] stringByAppendingPathComponent:dateString];
+    NSString *dirPath = [paths[0] stringByAppendingPathComponent:_className];
     
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL dir = NO;
@@ -290,10 +294,8 @@ NS_INLINE NSString * getAllKeyValueString(NSArray *objInArr) {
 
 ///生成.h
 - (BOOL)generateHeaderFile {
-    
-    NSString *dateStr = [NSDate lb_stringWithDate:[NSDate date] format:@"yyyy-MM-dd"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    NSString *dirPath = [paths[0] stringByAppendingPathComponent:dateStr];
+    NSString *dirPath = [paths[0] stringByAppendingPathComponent:_className];
     NSString *headFilePath = [dirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.h",_className]];
     
     NSError *error = nil;
@@ -304,10 +306,8 @@ NS_INLINE NSString * getAllKeyValueString(NSArray *objInArr) {
 
 ///生成.m
 - (BOOL)generateImplentFile {
-    
-    NSString *dateStr = [NSDate lb_stringWithDate:[NSDate date] format:@"yyyy-MM-dd"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    NSString *dirPath = [paths[0] stringByAppendingPathComponent:dateStr];
+    NSString *dirPath = [paths[0] stringByAppendingPathComponent:_className];
     NSString *sourceFilePath = [dirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.m",_className]];
     
     return [self.sourceString writeToFile:sourceFilePath atomically:NO encoding:NSUTF8StringEncoding error:nil];

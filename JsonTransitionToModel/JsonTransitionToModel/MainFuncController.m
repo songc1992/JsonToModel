@@ -75,29 +75,24 @@
     
     NSAlert *alert = [[NSAlert alloc] init];
     if (generaFileSuccess) {
-        
         alert.messageText = @"生成文件成功";
         alert.informativeText = @"打开文件目录";
         [alert addButtonWithTitle:@"OK"];
         [alert addButtonWithTitle:@"取消"];
-        
-        
     }else{
         alert.messageText = @"生成文件失败";
     }
     __weak typeof(self) weakSelf = self;
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == 1000) {
-            [weakSelf openFloder];
+            [weakSelf openFolder];
         }
     }];
 }
 
-- (void)openFloder {
-    
-    NSString *dateString = [NSDate lb_stringWithDate:[NSDate date] format:@"yyyy-MM-dd"];
+- (void)openFolder {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    NSString *dirPath = [paths.firstObject stringByAppendingPathComponent:dateString];
+    NSString *dirPath = [paths.firstObject stringByAppendingPathComponent:_modelHelper.className];
     [[NSWorkspace sharedWorkspace] selectFile:nil inFileViewerRootedAtPath:dirPath];
 }
 
