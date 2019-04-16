@@ -10,20 +10,24 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import <Foundation/Foundation.h>\n\n#if __has_include(<YYModel/YYModel.h>)\n#import <YYModel/YYModel.h>\n#else\n#import\"YYModel.h\" \n#endif\n\n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
+#define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import <Foundation/Foundation.h>\n\n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
 
 //#define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import <Foundation/Foundation.h>\n#import \"YYModel.h\" \n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
 #define k_DEFAULT_CLASS_NAME @("Model")
 #define k_AT_CLASS @("@class %@;\n")
-#define k_CLASS       @("\n@interface %@ : NSObject\n%@\n@end\n\n")
-#define k_PROPERTY(s)    ((s) == 'c' ? @("\n/** <#%@#>*/\n@property (nonatomic, copy) %@ *%@;\n") : @("\n/** <#%@#>*/\n@property (nonatomic, strong) %@ *%@;\n"))
+
+// 这里改成 BaseModel，根据项目实际情况改变
+//#define k_CLASS       @("\n@interface %@ : NSObject\n%@\n@end\n\n")
+#define k_CLASS       @("\n@interface %@ : BaseModel\n%@\n@end\n\n")
+
+#define k_PROPERTY(s)    ((s) == 'c' ? @("/// <#%@#>\n@property (nonatomic, copy) %@ *%@;\n") : @("/// <#%@#>\n@property (nonatomic, strong) %@ *%@;\n"))
 
 
 #define METHODIMP(keyValue) [NSString stringWithFormat:DMethod,keyValue]
 ///MJExtension使用
 #define ModelMethod @"\
 + (NSDictionary *)mj_replacedKeyFromPropertyName {\n\n\
-return @{@\"Id\":@\"id\",@\"Discription\":@\"discription\"};\n\
+return @{@\"Id\":@\"id\",@\"Description\":@\"description\"};\n\
 }\n\n\
 + (NSDictionary *)mj_objectClassInArray {\n\
 return @{%@};\n\
@@ -35,7 +39,7 @@ return @{%@};\n\
 
 #define DMethod @"+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {\n\
 \n\
-    return @{@\"Id\":@\"id\",@\"Discription\":@\"discription\"};\n\
+    return @{@\"Id\":@\"id\",@\"Description\":@\"description\"};\n\
 }\n\n\
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {\n\
     return @{%@};\n\

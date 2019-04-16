@@ -12,7 +12,7 @@
 
 + (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
 
-    return @{@"Id":@"id",@"Discription":@"discription"};
+    return @{@"Id":@"id",@"Description":@"description"};
 }
 
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {
@@ -38,7 +38,7 @@
 
 + (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
 
-    return @{@"Id":@"id",@"Discription":@"discription"};
+    return @{@"Id":@"id",@"Description":@"description"};
 }
 
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {
@@ -53,7 +53,7 @@
 
 + (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
 
-    return @{@"Id":@"id",@"Discription":@"discription"};
+    return @{@"Id":@"id",@"Description":@"description"};
 }
 
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {
@@ -68,7 +68,7 @@
 
 + (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
 
-    return @{@"Id":@"id",@"Discription":@"discription"};
+    return @{@"Id":@"id",@"Description":@"description"};
 }
 
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {
@@ -83,7 +83,7 @@
 
 + (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
 
-    return @{@"Id":@"id",@"Discription":@"discription"};
+    return @{@"Id":@"id",@"Description":@"description"};
 }
 
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {

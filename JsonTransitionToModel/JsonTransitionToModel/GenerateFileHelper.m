@@ -65,18 +65,18 @@
     NSDictionary *propertyAndKeyValue = [self handleDataEngine:dict forKey:@"" helper:helper];
     
     NSString *property = getPropertyString(propertyAndKeyValue[@"allProperty"]);
-    property = [property stringByAppendingString:MethodDef];
+//    property = [property stringByAppendingString:MethodDef];
     [helper.headerString appendFormat:k_CLASS,_className,property];
     
     NSString *keyValue = getAllKeyValueString(propertyAndKeyValue[@"objInArr"]);
-    NSString *str = [NSString stringWithFormat:@"%@%@",METHODIMP(keyValue),JsonToModelMethod];
+//    NSString *str = [NSString stringWithFormat:@"%@%@",METHODIMP(keyValue),JsonToModelMethod];
+    NSString *str = [NSString stringWithFormat:@"%@",METHODIMP(keyValue)];
     [helper.sourceString appendFormat:k_CLASS_M,_className,str];
     
     //拼接@class
     [self.headerString appendString:self.quoteClassString];
     //下面是拼接头文件和源文件
     for (NSInteger i = 0; i < self.allHelperArray.count; i++) {
-        
         MakeModelHelper *finalHelper = self.allHelperArray[i];
         [self.headerString appendFormat:@"%@", finalHelper.headerString];
         [self.sourceString appendFormat:@"%@", finalHelper.sourceString];
@@ -136,7 +136,7 @@ NS_INLINE NSString * getPropertyString(NSArray *propertys) {
 }
 
 NS_INLINE NSString * getAllKeyValueString(NSArray *objInArr) {
-    NSString *allKeyValue = [objInArr componentsJoinedByString:@","];
+    NSString *allKeyValue = [objInArr componentsJoinedByString:@",\n             "];
     return allKeyValue;
 }
 
@@ -195,6 +195,7 @@ NS_INLINE NSString * getAllKeyValueString(NSArray *objInArr) {
                 
                 NSString *mapperString =
                 [obj isKindOfClass:NSDictionary.class] ? className: ([obj isKindOfClass:NSString.class] ? @"NSString":@"NSNumber");
+//                NSString *keyValue = [NSString stringWithFormat:@"@\"%@\" : NSClassFromString(@\"%@\")",curKey,mapperString];
                 NSString *keyValue = [NSString stringWithFormat:@"@\"%@\" : NSClassFromString(@\"%@\")",curKey,mapperString];
                 [objInArr addObject:keyValue];
                 [self.quoteClassString appendFormat:k_AT_CLASS,className];
