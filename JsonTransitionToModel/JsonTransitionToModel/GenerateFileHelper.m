@@ -196,7 +196,8 @@ NS_INLINE NSString * getAllKeyValueString(NSArray *objInArr) {
                 NSString *mapperString =
                 [obj isKindOfClass:NSDictionary.class] ? className: ([obj isKindOfClass:NSString.class] ? @"NSString":@"NSNumber");
 //                NSString *keyValue = [NSString stringWithFormat:@"@\"%@\" : NSClassFromString(@\"%@\")",curKey,mapperString];
-                NSString *keyValue = [NSString stringWithFormat:@"@\"%@\" : NSClassFromString(@\"%@\")",curKey,mapperString];
+//                NSString *keyValue = [NSString stringWithFormat:@"@\"%@\" : NSClassFromString(@\"%@\")",curKey,mapperString];
+                NSString *keyValue = [NSString stringWithFormat:@"@\"%@\" : [%@ class]",curKey,mapperString];
                 [objInArr addObject:keyValue];
                 [self.quoteClassString appendFormat:k_AT_CLASS,className];
                 

@@ -10,9 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import <Foundation/Foundation.h>\n\n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
+//#define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import <Foundation/Foundation.h>\n\n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
+#define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"BaseModel.h\"\n\n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
 
-//#define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import <Foundation/Foundation.h>\n#import \"YYModel.h\" \n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
+
 #define k_DEFAULT_CLASS_NAME @("Model")
 #define k_AT_CLASS @("@class %@;\n")
 
@@ -37,13 +38,13 @@ return @{%@};\n\
 
 #define MethodDef  @"\n\n+ (instancetype)modelWithJson:(id)json;\n"
 
-#define DMethod @"+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {\n\
+#define DMethod @"+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {\
 \n\
     return @{@\"Id\":@\"id\",@\"Description\":@\"description\"};\n\
 }\n\n\
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {\n\
     return @{%@};\n\
-}\n\n"
+}\n"
 
 #define JsonToModelMethod @"+ (instancetype)modelWithJson:(id)json {\n\n\
     id model = nil;\n\
