@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 这里也将 .h 中的头文件引用改为 BaseModel，根据需要填写
 //#define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import <Foundation/Foundation.h>\n\n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
 #define k_HEADINFO(h) ((h) == 'h' ? @("//\n//  %@.h\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"BaseModel.h\"\n\n") :@("//\n//  %@.m\n//  %@\n//  Created by %@ on %@.\n//  Copyright © %@年 %@. All rights reserved.\n//\n\n#import \"%@.h\"\n"))
 
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define k_DEFAULT_CLASS_NAME @("Model")
 #define k_AT_CLASS @("@class %@;\n")
 
-// 这里改成 BaseModel，根据项目实际情况改变
+// 这里父类改成 BaseModel，根据项目实际情况改变
 //#define k_CLASS       @("\n@interface %@ : NSObject\n%@\n@end\n\n")
 #define k_CLASS       @("\n@interface %@ : BaseModel\n%@\n@end\n\n")
 

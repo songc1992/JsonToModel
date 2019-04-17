@@ -1,5 +1,5 @@
 # JsonToModel
-基于YYModel,利用mac程序将json字符串转化成OC的Model类 省去json转模型部分代码.
+基于 YYModel ,利用 macOS 程序将 JSON 字符串转化成 OC 的 Model 类。
 
 # 使用步骤
 - 将项目拉到本地
@@ -10,3 +10,5 @@
 - 把生成的 Model 文件拖到 iOS 项目中
 
 # 注意事项
+1. iOS 模拟器设置需要在 `Edit` 选项中勾选 `Automatically Sync Pasteboard` 选项，这样才能跟 macOS 共享粘贴板数据，如果是模拟器默认打开了该选项，仍然不能共享数据，需要手动取消勾选再选中
+2. 可以拉取完此项目以后，先根据自己的情况修改一部分代码，比如把继承改为自己项目中 Model 的基类；添加默认的 Author Name 和 Project Name，不用每次都填写。
